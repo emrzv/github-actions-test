@@ -27,7 +27,7 @@ jobs:
           payload: |
             {
               "channel": "ij-starter-github-failures",
-              "message": "bar"
+              "text": "bar"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
