@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  test_notifications:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: This step can fail
+        id: can-fail
+        run: echo ::set-output name=status::failure
+        continue-on-error: true
+
+      - name: Send notifications
+        uses: slackapi/slack-github-action@v1.24.0
+        if: steps.can-fail.outcome != 'success'
+        with:
+          payload: |
+            {
+              "channel": "ij-starter-github-failures",
+              "message": "bar"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
