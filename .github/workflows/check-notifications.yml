@@ -1,4 +1,4 @@
-name: CI
+iname: CI
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
 
       - name: This step can fail
         id: can-fail
-        run: echo ::set-output name=status::failure
+        run: exit 1
         continue-on-error: true
 
       - name: Send notifications
