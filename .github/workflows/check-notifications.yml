@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-  workflow_dispatch:
-
 jobs:
   test_notifications:
     runs-on: ubuntu-latest
@@ -25,7 +23,7 @@ jobs:
           payload: |
             {
               "channel": "ij-starter-github-failures",
-              "text": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+              "text": ":x: The workflow has failed on [${{ github.event.head_commit.message }}](${{ github.event.pull_request.html_url || github.event.head_commit.url }})"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
