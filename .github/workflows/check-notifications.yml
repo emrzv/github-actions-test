@@ -18,7 +18,6 @@ jobs:
       - name: This step can fail
         id: can-fail
         run: exit 1
-        continue-on-error: true
 
       - name: Send notifications
         uses: slackapi/slack-github-action@v1.24.0
