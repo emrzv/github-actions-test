@@ -23,7 +23,7 @@ jobs:
           payload: |
             {
               "channel": "ij-starter-github-failures",
-              "text": |
+              "text": >
                 :x: The workflow has failed on
                 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>
             }
