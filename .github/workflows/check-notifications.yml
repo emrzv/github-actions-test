@@ -23,9 +23,7 @@ jobs:
           payload: |
             {
               "channel": "ij-starter-github-failures",
-              "text": >
-                :x: The workflow has failed on
-                <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>
+              "text": ":x: The workflow has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
