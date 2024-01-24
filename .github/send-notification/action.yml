@@ -1,18 +1,6 @@
 name: 'Send notification'
 description: 'Sends a notification about failure to Slack'
 inputs:
-  workflow_name:
-    description: 'Workflow name'
-    required: true
-  job_name:
-    description: 'Job name'
-    required: true
-  run_id:
-    description: 'Run ID'
-    required: true
-  commit_message:
-    description: 'Commit message'
-    required: true
   secret:
     description: 'Slack hook URL'
     required: true
@@ -26,7 +14,7 @@ runs:
         payload: |
           {
             "channel": "emrzv-test",
-            "text": ":x: The ij-perf-report-aggregator/${{ inputs.workflow_name }}/${{ inputs.job_name }} has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
+            "text": ":x: The ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }} job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ inputs.secret }}
