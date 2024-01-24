@@ -25,7 +25,7 @@ runs:
       with:
         payload: |
           {
-            "channel": "phpstorm-support-ex",
+            "channel": "emrzv-test",
             "text": ":x: The ij-perf-report-aggregator/${{ inputs.workflow_name }}/${{ inputs.job_name }} has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
           }
       env:
