@@ -16,7 +16,7 @@ jobs:
         id: can-fail
         run: exit 1
 
-      - uses: emrzv/github-test-actions/.github/workflows/send-notifications.yml
+      - uses: emrzv/github-test-actions/.github/workflows/send-notifications.yml@main
         if: ${{ failure() }}
         with:
           workflow-name: github.action
