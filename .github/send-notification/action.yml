@@ -29,4 +29,4 @@ runs:
             "text": ":x: The ij-perf-report-aggregator/${{ inputs.workflow_name }}/${{ inputs.job_name }} has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
           }
       env:
-        SLACK_WEBHOOK_URL: inputs.secret
+        SLACK_WEBHOOK_URL: ${{ inputs.secret }}
