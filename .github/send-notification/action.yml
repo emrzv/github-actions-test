@@ -4,12 +4,14 @@ inputs:
   secret:
     description: 'Slack hook URL'
     required: true
+  channel:
+    description: 'Channel the notification will be sent to'
+    required: true
+    default: 'emrzv-test'
   text:
     description: 'Notification text'
     required: true
-    default: >
-      :x: The *ij-perf-report-aggregator/${{ github.workflow }}* `${{ github.job }}` job has failed on
-      <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>
+    default: ':x: The *ij-perf-report-aggregator/${{ github.workflow }}* `${{ github.job }}` job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>'
 
 runs:
   using: "composite"
@@ -18,7 +20,7 @@ runs:
       with:
         payload: |
           {
-            "channel": "emrzv-test",
+            "channel": "${{ inputs.channel }}",
             "text": "${{ inputs.text }}",
             "blocks": [
               {
