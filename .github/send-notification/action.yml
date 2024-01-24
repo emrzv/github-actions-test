@@ -10,16 +10,16 @@ runs:
   steps:
     - uses: slackapi/slack-github-action@v1.24.0
       with:
-        channel-id: 'emrzv-test'
         payload: |
           {
-            "text": ":x: The ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }} job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>",
+            "channel": "emrzv-test",
+            "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
             "blocks": [
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ":x: The *ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }}* job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>"
+                  "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                 }
               }
             ]
