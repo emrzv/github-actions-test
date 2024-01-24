@@ -16,7 +16,7 @@ jobs:
         id: can-fail
         run: exit 1
 
-      - uses: ./.github/actions/send-notifications.yml@main
+      - uses: ./.github/send-notification@main
         if: ${{ failure() }}
         with:
           workflow-name: github.action
