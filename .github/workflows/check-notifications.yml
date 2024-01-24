@@ -19,8 +19,8 @@ jobs:
       - uses: ./.github/send-notification
         if: ${{ failure() }}
         with:
-          workflow_name: ${{ github.action }}
-          job_name: ${{ job.name }}
+          workflow_name: ${{ github.workflow }}
+          job_name: ${{ github.job }}
           run_id: ${{ github.run_id }}
           commit_message: ${{ github.event.head_commit.message }}
           secret: ${{ secrets.SLACK_WEBHOOK_URL }}
