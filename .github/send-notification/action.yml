@@ -14,7 +14,7 @@ runs:
         payload: |
           {
             "channel": "emrzv-test",
-            "text": ":x: The ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }} job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
+            "text": ":x: The ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }} job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ inputs.commit_message }}>"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ inputs.secret }}
