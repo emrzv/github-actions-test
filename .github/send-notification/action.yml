@@ -14,7 +14,7 @@ runs:
           {
             "channel": "emrzv-test",
             "text": 
-              "type": "mrkdwn":
+              "type": "mrkdwn",
               "text": ":x: The *ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }}* job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>"
           }
       env:
