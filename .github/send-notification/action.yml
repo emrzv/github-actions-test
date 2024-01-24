@@ -7,7 +7,9 @@ inputs:
   text:
     description: 'Notification text'
     required: true
-    default: ':x: The *ij-perf-report-aggregator/${{ github.workflow }}* `${{ github.job }}` job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>'
+    default: >
+      :x: The *ij-perf-report-aggregator/${{ github.workflow }}* `${{ github.job }}` job has failed on
+      <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>
 
 runs:
   using: "composite"
