@@ -23,3 +23,4 @@ jobs:
           job-name: job.name
           run-id: github.run_id
           commit-message: github.event.head_commit.message
+          secret: ${{ secrets.SLACK_WEBHOOK_URL }}
