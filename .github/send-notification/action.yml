@@ -1,0 +1,29 @@
+name: 'Send notification'
+description: 'Sends a notification about failure to Slack'
+inputs:
+  workflow_name:
+    description: 'Workflow name'
+    required: true
+  job_name:
+    description: 'Job name'
+    required: true
+  run_id:
+    description: 'Run ID'
+    required: true
+  commit_message:
+    description: 'Commit message'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Send notifications
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload: |
+          {
+            "channel": "phpstorm-support-ex",
+            "text": ":x: The ij-perf-report-aggregator/${{ inputs.workflow_name }}/${{ inputs.job_name }} has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ inputs.run_id }}|${{ inputs.commit_message }}>"
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
