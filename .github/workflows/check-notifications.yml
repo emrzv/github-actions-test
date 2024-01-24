@@ -16,14 +16,10 @@ jobs:
         id: can-fail
         run: exit 1
 
-      - name: Send notifications
-        uses: slackapi/slack-github-action@v1.24.0
+      - uses: emrzv/github-test-actions/.github/workflows/send-notifications.yml
         if: ${{ failure() }}
         with:
-          payload: |
-            {
-              "channel": "ij-starter-github-failures",
-              "text": ":x: The workflow has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          workflow-name: github.action
+          job-name: job.name
+          run-id: github.run_id
+          commit-message: github.event.head_commit.message
