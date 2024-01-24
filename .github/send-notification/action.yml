@@ -13,13 +13,13 @@ runs:
         payload: |
           {
             "channel": "emrzv-test",
-            "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "text": ":x: The *ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }}* job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>",
             "blocks": [
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  "text": ":x: The *ij-perf-report-aggregator/${{ github.workflow }}/${{ github.job }}* job has failed on <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|${{ github.event.head_commit.message }}>"
                 }
               }
             ]
